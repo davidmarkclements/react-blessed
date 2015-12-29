@@ -81,7 +81,7 @@ function update(node, options) {
                 else if (key === 'filled' && node.filled !== value) node.setProgress(value);
 
                   // Table / ListTable rows / data
-                  else if ((key === 'rows' || key === 'data') && node.setData) node.setData(value);else if (key === 'focused') if (value && !node[key]) node.focus();
+                  else if ((key === 'rows' || key === 'data') && node.setData) node.setData(value);else if (key === 'focused' && value && !node[key]) node.focus();
 
                     // Raw attributes
                     else for (var i = 0, l = RAW_ATTRIBUTES.length; i < l; i++) {
