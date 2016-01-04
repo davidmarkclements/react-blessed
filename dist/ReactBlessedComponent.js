@@ -193,6 +193,10 @@ var ReactBlessedComponent = (function () {
       (0, _update2['default'])(node, (0, _solveClass2['default'])(options));
       this._updating = false;
 
+      if (this._currentElement !== nextElement) {
+        this._currentElement = nextElement;
+      }
+
       // Updating children
       var childrenToUse = children === null ? [] : [].concat(children);
 

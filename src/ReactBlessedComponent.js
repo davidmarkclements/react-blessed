@@ -141,6 +141,10 @@ export default class ReactBlessedComponent {
     this._updating = true;
     update(node, solveClass(options));
     this._updating = false;
+    
+    if (this._currentElement !== nextElement) {
+      this._currentElement = nextElement
+    }
 
     // Updating children
     const childrenToUse = children === null ? [] : [].concat(children);
