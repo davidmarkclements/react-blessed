@@ -50,8 +50,7 @@ const RAW_ATTRIBUTES = [
   'height',
 
   // Misc
-  'name',
-  'hoverText'
+  'name'
 ];
 
 /**
@@ -79,6 +78,12 @@ export default function update(node, options) {
     // Setting label
     else if (key === 'label')
       node.setLabel(value);
+
+    // Removing hoverText
+    else if (key === 'hoverText' && !value) node.removeHover()
+
+    // Setting hoverText
+    else if (key === 'hoverText' && value) node.setHover(value)
 
     // Setting content
     else if (key === 'content')

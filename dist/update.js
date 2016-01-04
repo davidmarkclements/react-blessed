@@ -35,7 +35,7 @@ var RAW_ATTRIBUTES = [
 'width', 'height',
 
 // Misc
-'name', 'hoverText'];
+'name'];
 
 /**
  * Updates the given blessed node.
@@ -62,34 +62,40 @@ function update(node, options) {
     // Setting label
     else if (key === 'label') node.setLabel(value);
 
-      // Setting content
-      else if (key === 'content') node.setContent(value);
+      // Removing hoverText
+      else if (key === 'hoverText' && !value) node.removeHover();
 
-        // Updating style
-        else if (key === 'style') node.style = _lodash2['default'].merge({}, node.style, value);
+        // Setting hoverText
+        else if (key === 'hoverText' && value) node.setHover(value);
 
-          // Updating items
-          else if (key === 'items') node.setItems(value);
+          // Setting content
+          else if (key === 'content') node.setContent(value);
 
-            // Border edge case
-            else if (key === 'border') node.border = _lodash2['default'].merge({}, node.border, value);
+            // Updating style
+            else if (key === 'style') node.style = _lodash2['default'].merge({}, node.style, value);
 
-              // Textarea value
-              else if (key === 'value' && node.setValue) node.setValue(value);
+              // Updating items
+              else if (key === 'items') node.setItems(value);
 
-                // Progress bar
-                else if (key === 'filled' && node.filled !== value) node.setProgress(value);
+                // Border edge case
+                else if (key === 'border') node.border = _lodash2['default'].merge({}, node.border, value);
 
-                  // Table / ListTable rows / data
-                  else if ((key === 'rows' || key === 'data') && node.setData) node.setData(value);else if (key === 'focused' && value && !node[key]) node.focus();
+                  // Textarea value
+                  else if (key === 'value' && node.setValue) node.setValue(value);
 
-                    // Raw attributes
-                    else for (var i = 0, l = RAW_ATTRIBUTES.length; i < l; i++) {
-                        if (key === RAW_ATTRIBUTES[i]) {
-                          node[key] = value;
-                          break;
-                        }
-                      }
+                    // Progress bar
+                    else if (key === 'filled' && node.filled !== value) node.setProgress(value);
+
+                      // Table / ListTable rows / data
+                      else if ((key === 'rows' || key === 'data') && node.setData) node.setData(value);else if (key === 'focused' && value && !node[key]) node.focus();
+
+                        // Raw attributes
+                        else for (var i = 0, l = RAW_ATTRIBUTES.length; i < l; i++) {
+                            if (key === RAW_ATTRIBUTES[i]) {
+                              node[key] = value;
+                              break;
+                            }
+                          }
   }
 
   selectQue.forEach(function (_ref) {
